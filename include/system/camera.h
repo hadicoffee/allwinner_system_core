@@ -163,6 +163,7 @@ enum {
      * can silently finish itself or show a dialog.
      */
     CAMERA_CMD_PING = 9,
+    
 
     /**
      * Configure the number of video buffers used for recording. The intended
@@ -174,6 +175,9 @@ enum {
      * count is non-positive or too big to be realized.
      */
     CAMERA_CMD_SET_VIDEO_BUFFER_COUNT = 10,
+
+    CAMERA_CMD_SET_SCREEN_ID = 0xFF000000,
+	CAMERA_CMD_SET_CEDARX_RECORDER = 0xFF000001,
 };
 
 /** camera fatal errors */

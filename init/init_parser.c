@@ -101,6 +101,8 @@ int lookup_keyword(const char *s)
         if (!strcmp(s, "xec")) return K_exec;
         if (!strcmp(s, "xport")) return K_export;
         break;
+    case 'f':
+    	if(!strcmp(s, "ormat_userdata")) return K_format_userdata;
     case 'g':
         if (!strcmp(s, "roup")) return K_group;
         break;
@@ -112,6 +114,7 @@ int lookup_keyword(const char *s)
         if (!strcmp(s, "fup")) return K_ifup;
         if (!strcmp(s, "nsmod")) return K_insmod;
         if (!strcmp(s, "mport")) return K_import;
+        if (!strcmp(s, "nsmod_modules")) return K_insmod_modules;
         break;
     case 'k':
         if (!strcmp(s, "eycodes")) return K_keycodes;
@@ -151,12 +154,14 @@ int lookup_keyword(const char *s)
         if (!strcmp(s, "top")) return K_stop;
         if (!strcmp(s, "ymlink")) return K_symlink;
         if (!strcmp(s, "ysclktz")) return K_sysclktz;
+        if (!strcmp(s, "etupfs")) return K_setupfs;
         break;
     case 't':
         if (!strcmp(s, "rigger")) return K_trigger;
         break;
     case 'u':
         if (!strcmp(s, "ser")) return K_user;
+        if (!strcmp(s, "mount")) return K_umount;
         break;
     case 'w':
         if (!strcmp(s, "rite")) return K_write;

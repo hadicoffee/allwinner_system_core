@@ -585,7 +585,8 @@ static int console_init_action(int nargs, char **args)
         have_console = 1;
     close(fd);
 
-    if( load_565rle_image(INIT_IMAGE_FILE) ) {
+    //if( load_565rle_image(INIT_IMAGE_FILE) ) {
+    if( load_argb8888_image(INIT_IMAGE_FILE) ) {
         fd = open("/dev/tty0", O_WRONLY);
         if (fd >= 0) {
             const char *msg;
@@ -926,7 +927,7 @@ int main(int argc, char **argv)
 
     queue_builtin_action(wait_for_coldboot_done_action, "wait_for_coldboot_done");
     queue_builtin_action(keychord_init_action, "keychord_init");
-    queue_builtin_action(console_init_action, "console_init");
+    //queue_builtin_action(console_init_action, "console_init");
 
     /* execute all the boot actions to get us started */
     action_for_each_trigger("init", action_add_queue_tail);
@@ -934,6 +935,7 @@ int main(int argc, char **argv)
     /* skip mounting filesystems in charger mode */
     if (!is_charger) {
         action_for_each_trigger("early-fs", action_add_queue_tail);
+        queue_builtin_action(console_init_action, "console_init");
         action_for_each_trigger("fs", action_add_queue_tail);
         action_for_each_trigger("post-fs", action_add_queue_tail);
         action_for_each_trigger("post-fs-data", action_add_queue_tail);
